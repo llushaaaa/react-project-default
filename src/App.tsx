@@ -3,9 +3,9 @@ import React from 'react';
 import './App.scss';
 
 interface IProps {
-  title: string;
+  title?: string;
 }
 
 export const App = ({ title }: IProps) => (
-  <h1 className="container">{title}</h1>
+  <h1 className="container">{title || 'Hello World'}</h1>
 );

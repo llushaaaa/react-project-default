@@ -1,8 +1,8 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/index.tsx',
@@ -32,11 +32,7 @@ module.exports = {
       {
         test: /\.s?css$/,
         exclude: /node_modules/,
-        use: [
-          new miniCssExtractPlugin.loader,
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
-        ],
+        use: [miniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -46,7 +42,7 @@ module.exports = {
     }),
     new miniCssExtractPlugin({
       filename: isProd ? '[name].[hash].css' : '[name].css',
-      chunkFilename: isProd ? '[id].[hash].css' : '[id].css'
-    })
+      chunkFilename: isProd ? '[id].[hash].css' : '[id].css',
+    }),
   ],
 };
