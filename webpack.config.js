@@ -33,7 +33,18 @@ module.exports = {
       {
         test: /\.s?css$/,
         exclude: /node_modules/,
-        use: [miniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          miniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]-[local]-[hash:base64:5]',
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },
